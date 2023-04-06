@@ -3,3 +3,7 @@ function prompt {
   $host.UI.writeline("yellow", $host.UI.RawUI.BackgroundColor, (get-location).Path);
   "> "
 }
+
+function which($command) {
+  get-command $command | select-object -expandproperty definition
+}
