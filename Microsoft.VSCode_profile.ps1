@@ -11,3 +11,5 @@ function prompt {
 function which($command) {
   get-command $command | select-object -expandproperty definition
 }
+
+$env:PIPENV_VENV_IN_PROJECT="true"
