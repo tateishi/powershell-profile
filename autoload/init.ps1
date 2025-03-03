@@ -13,4 +13,10 @@ function which($command) {
 }
   
 $env:PIPENV_VENV_IN_PROJECT="true"
-$env:path += "$home\bin"
+
+$paths = @(
+    "$home\bin",
+    "$home\.local\bin"
+)
+
+$env:path += $paths -join ";"
