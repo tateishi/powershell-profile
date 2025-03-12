@@ -19,4 +19,4 @@ $paths = @(
     "$home\.local\bin"
 )
 
-$env:path += $paths -join ";"
+$env:path += ";" + ($paths -join ";")
