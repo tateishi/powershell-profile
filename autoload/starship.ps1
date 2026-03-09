@@ -31,11 +31,17 @@ catch {
 $Env:STARSHIP_POWERSHELL_VERSION = $PSVersionTable.PSVersion.ToString()
 
 # （任意）見分けやすいように種別も出す
-if ($PSVersionTable.PSEdition -eq 'Core') {
+
+$kind = $PSVersionTable.PSEdition.ToLower()
+
+if ($kind -eq 'core') {
     $Env:STARSHIP_POWERSHELL_KIND = 'ps7'
 }
-else {
+elseif ($kind -eq 'desktop') {
     $Env:STARSHIP_POWERSHELL_KIND = 'ps5'
+}
+else {
+    $Env:STARSHIP_POWERSHELL_KIND = 'unknown'
 }
 
 Invoke-Expression (&starship init powershell)
